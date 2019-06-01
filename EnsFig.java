@@ -19,6 +19,18 @@ public class EnsFig{
   public void setFigs(int i, Figure f){
     this.figs.set(i, f);
   }
+  public void nettoyer() {
+	  ListIterator<Figure> ite = this.getFigs().listIterator();
+	  while(ite.hasNext()) {		  
+		  Figure f = ite.next();
+		  if(f.getTaille() < 2) {
+			  ite.remove();
+		  }
+		  else if(f instanceof Triangle && f.getTaille() < 3) {
+			  ite.remove();
+		  } 
+	  }
+  }
   public String toString(){
     String s = "[" + "\n";
     for(int i = 0; i < this.getTaille(); i++){

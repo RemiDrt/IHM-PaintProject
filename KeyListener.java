@@ -1,8 +1,6 @@
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import javax.swing.JOptionPane;
-
 public class KeyListener extends KeyAdapter {
 	private VueFig vue;
 	public KeyListener(VueFig vue) {
@@ -10,7 +8,7 @@ public class KeyListener extends KeyAdapter {
 		this.vue = vue;
 	}
 	public void keyReleased(KeyEvent e) {
-		System.out.println("ctrl : " + e.isControlDown() + " touche : " + e.getKeyCode() + " relaché");
+		System.out.println("ctrl : " + e.isControlDown() + " touche : " + e.getKeyCode() + " relache");
 		if(e.getKeyCode() == 83) {
 			System.out.println("new seg");
 			vue.setMode(0);
@@ -60,6 +58,6 @@ public class KeyListener extends KeyAdapter {
 				vue.getFigs().ajouter(new Cercle(false, vue.getCouleur()));
 			}
 		}
-		else System.out.println("elle sert a rien celle-lé !");
+		else System.out.println("elle sert a rien celle-le !");
 	}
 }
