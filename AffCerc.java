@@ -5,7 +5,10 @@ public class AffCerc  extends JPanel implements Afficheur {
   public AffCerc(Figure cer){
     this.cer = (Cercle)cer;
   }
-  public void dessinerFig(Graphics g){
+  public Cercle getFigure() {
+	return cer;
+}
+public void dessinerFig(Graphics g){
     g.setColor(cer.getCouleur());
 	  this.cer.initWH();
 	  if(this.cer.estPlein()) {

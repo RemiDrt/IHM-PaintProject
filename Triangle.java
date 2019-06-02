@@ -30,4 +30,10 @@ public class Triangle extends Figure{
     String s = "[Tri : " + super.toString();
     return s;
   }
+  public boolean equals(Object o) {
+	  if(o==null || !(o instanceof Triangle)) {
+		  return false;
+	  }
+	  return super.equals(o);
+  }
 }

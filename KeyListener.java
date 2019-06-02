@@ -10,11 +10,13 @@ public class KeyListener extends KeyAdapter {
 	public void keyReleased(KeyEvent e) {
 		System.out.println("ctrl : " + e.isControlDown() + " touche : " + e.getKeyCode() + " relache");
 		if(e.getKeyCode() == 83) {
+			vue.defaultCursor();
 			System.out.println("new seg");
 			vue.setMode(0);
 			vue.getFigs().ajouter(new Segment(vue.getCouleur()));
 		}
 		else if(e.getKeyCode() == 82) {
+			vue.defaultCursor();
 			System.out.println("new rec");
 			if(e.isControlDown()) {
 				vue.setMode(2);
@@ -26,6 +28,7 @@ public class KeyListener extends KeyAdapter {
 			}
 		}
 		else if(e.getKeyCode() == 84) {
+			vue.defaultCursor();
 			System.out.println("new tri");
 			if(e.isControlDown()) {
 				vue.setMode(4);
@@ -37,6 +40,7 @@ public class KeyListener extends KeyAdapter {
 			}
 		}
 		else if(e.getKeyCode() == 69) {
+			vue.defaultCursor();
 			System.out.println("new eli");
 			if(e.isControlDown()) {
 				vue.setMode(6);
@@ -48,6 +52,7 @@ public class KeyListener extends KeyAdapter {
 			}
 		}
 		else if(e.getKeyCode() == 67) {
+			vue.defaultCursor();
 			System.out.println("new cerc");
 			if(e.isControlDown()) {
 				vue.setMode(8);
@@ -57,6 +62,10 @@ public class KeyListener extends KeyAdapter {
 				vue.setMode(7);
 				vue.getFigs().ajouter(new Cercle(false, vue.getCouleur()));
 			}
+		}
+		else if(e.getKeyCode() == 71) {//c'est g donc la gomme
+			vue.customCursor();
+			vue.setMode(11);
 		}
 		else System.out.println("elle sert a rien celle-le !");
 	}

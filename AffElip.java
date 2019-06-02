@@ -3,7 +3,10 @@ import javax.swing.*;
 public class AffElip  extends JPanel implements Afficheur {
   private Elipse el;
 
-  public AffElip(Figure el){
+  public Elipse getFigure() {
+	return el;
+}
+public AffElip(Figure el){
     this.el = (Elipse)el;
   }
   public void dessinerFig(Graphics g){

@@ -39,6 +39,23 @@ public Figure(boolean plein, Color couleur){
   public int getTaille() {
 	  return this.points.size();
   }
+  public boolean equals(Object o) {
+	  if(o == null || !(o instanceof Figure)) {
+		  return false;
+	  }
+	  else {
+		  Figure f = (Figure) o;
+		  boolean test = f.getTaille()==this.getTaille() && this.getCouleur().equals(f.getCouleur()) && this.estPlein()==f.estPlein();//meme taille de liste,meme couleur, meme plein
+		  if(test) {
+			  for(int i = 0; i<this.getTaille(); i++) {//dans la liste tous les points sont les memes
+				  if(!(this.getI(i).equals(f.getI(i)))) {//si un point est different on return false
+					  return false;
+				  }
+			  }
+		  }
+		  return test;
+	  }
+  }
   public String toString(){
 	String s = "";
 	for(int i=0; i<this.points.size(); i++) {

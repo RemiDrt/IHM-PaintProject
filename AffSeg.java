@@ -2,7 +2,10 @@ import java.awt.*;
 import javax.swing.*;
 public class AffSeg  extends JPanel implements Afficheur {
   private Segment seg;
-  public AffSeg(Figure seg){
+  public Segment getFigure() {
+	return seg;
+}
+public AffSeg(Figure seg){
     this.seg = (Segment)seg;
   }
   public void dessinerFig(Graphics g){

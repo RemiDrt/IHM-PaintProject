@@ -1,13 +1,16 @@
 import java.awt.*;
 public class AffGomme implements Afficheur {
-	private Point centre;
+	private Gomme gomme;
 
-	public AffGomme(Point centre) {
+	public AffGomme(Gomme gomme) {
 		super();
-		this.centre = centre;
+		this.gomme = gomme;
 	}
 	public void dessinerFig(Graphics g) {
-		g.setColor(Color.WHITE);
-		g.fillOval((int)centre.getX() - 50, (int)centre.getY() - 50, 100, 100);
+		g.setColor(gomme.getCouleur());
+		g.fillOval((int)gomme.getI(0).getX() - 50, (int)gomme.getI(0).getY() - 50, 100, 100);
+	}
+	public Gomme getFigure() {
+		return gomme;
 	}
 }

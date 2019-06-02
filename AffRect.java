@@ -3,7 +3,10 @@ import javax.swing.*;
 public class AffRect  extends JPanel implements Afficheur {
   private Rectangle rec;
 
-  public AffRect(Figure rec){
+  public Rectangle getFigure() {
+	return rec;
+}
+public AffRect(Figure rec){
     this.rec = (Rectangle) rec;
   }
   public void dessinerFig(Graphics g){

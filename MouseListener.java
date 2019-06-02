@@ -168,8 +168,19 @@ public class MouseListener extends MouseAdapter {
 			}
 		}
 		else if (vue.getMode() == 10) {
-			System.out.println("gommme");
-			AffGomme aff = new AffGomme(new Point(e.getX(), e.getY()));
+			System.out.println("new text");
+			String str = vue.getPanText().getText();
+			Text t = new Text(vue.getCouleur(), str, new Point(e.getX(), e.getY()));
+			vue.getFigs().ajouter(t);
+			AffText aff = new AffText(t);
+			vue.getAffs().ajouter(aff);
+			this.vue.getPanneau().repaint();
+		}
+		else if (vue.getMode() == 11) {
+			System.out.println("new gommme");
+			Gomme g = new Gomme(new Point(e.getX(), e.getY()));
+			vue.getFigs().ajouter(g);
+			AffGomme aff = new AffGomme(g);
 			vue.getAffs().ajouter(aff);
 			this.vue.getPanneau().repaint();
 		}

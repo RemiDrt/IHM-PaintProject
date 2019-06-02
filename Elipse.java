@@ -34,4 +34,10 @@ public class Elipse extends Figure{
     String s = "[Eli : w:" + this.getWidth() + "|h:" + this.getHeight() + "|" + super.toString();
     return s;
   }
+  public boolean equals(Object o) {
+	  if(o==null || !(o instanceof Elipse)) {
+		  return false;
+	  }
+	  return super.equals(o);
+  }
 }

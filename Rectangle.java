@@ -8,4 +8,10 @@ public class Rectangle extends Figure {
     s = s + super.toString();
     return s;
   }
+  public boolean equals(Object o) {
+	  if(o==null || !(o instanceof Rectangle)) {
+		  return false;
+	  }
+	  return super.equals(o);
+  }
 }

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 public class EnsAff {
 	 private ArrayList<Afficheur> affs;
@@ -19,5 +20,12 @@ public class EnsAff {
 	  }
 	  public void setAffs(int i, Afficheur f){
 	    this.affs.set(i, f);
+	  }
+	  public void vider() {
+		  ListIterator<Afficheur> ite = this.getAffs().listIterator();
+		  while(ite.hasNext()) {		  
+			  ite.next();
+			  ite.remove();
+		  }
 	  }
 }

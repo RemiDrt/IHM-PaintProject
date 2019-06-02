@@ -34,4 +34,10 @@ public class Cercle extends Elipse{
     String s = "[Cerc : |r:" + this.getRay() + "|" + super.toString();
     return s;
   }
+  public boolean equals(Object o) {
+	  if(o==null || !(o instanceof Cercle)) {
+		  return false;
+	  }
+	  return super.equals(o);
+  }
 }

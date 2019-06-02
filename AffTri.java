@@ -3,7 +3,10 @@ import javax.swing.*;
 public class AffTri  extends JPanel implements Afficheur {
   private Triangle tri;
 
-  public AffTri(Figure tri){
+  public Triangle getFigure() {
+	return tri;
+}
+public AffTri(Figure tri){
     this.tri = (Triangle)tri;
   }
   public void dessinerFig(Graphics g){

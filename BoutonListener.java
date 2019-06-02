@@ -61,7 +61,6 @@ public class BoutonListener implements FigCte, ActionListener{
         break;
       case CERCLE : {
     	  vue.defaultCursor();
-    	  vue.defaultCursor();
         System.out.println("new cerc");
         vue.getFigs().ajouter(new Cercle(false, vue.getCouleur()));
         vue.setMode(CERCLE);
@@ -83,6 +82,13 @@ public class BoutonListener implements FigCte, ActionListener{
         System.out.println("c : " + this.vue.getCouleur());
       }
         break;
+      case TEXT : {
+    	  System.out.println(vue.getMode() + " = mode");
+    	  vue.defaultCursor();
+          System.out.println("new text");
+          vue.setMode(TEXT);
+      }
+      	break;
       case GOMME : {
     	  vue.customCursor();
     	  vue.getFigs().ajouter(new Cercle(true, Color.white));

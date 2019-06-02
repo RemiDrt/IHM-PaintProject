@@ -1,6 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.ListIterator;
 public class VueFig extends JFrame implements FigCte{
 	private Color couleur;
 	private int mode;
@@ -12,7 +13,13 @@ public class VueFig extends JFrame implements FigCte{
 	private EnsFig figs;
 	private EnsAff affs;
 	private JPanel nord;
+	private JPanel centre;
 	private PanelFig panneau;
+	private JTextArea text;
+	public JTextArea getPanText() {
+		return text;
+	}
+	private JTabbedPane onglets; 
 	
 	
 	public PanelFig getPanneau() {
@@ -69,14 +76,21 @@ public class VueFig extends JFrame implements FigCte{
 			for(int i=0; i<getAffs().getTaille(); i++) {
 				getAffs().getAffs(i).dessinerFig(g);
 			}
-
+			System.out.println(mesFigs());
 		}
 	}
-	public PanelFig getPanneauCentre(){
+	public JPanel getPanneauCentre(){
+		onglets = new JTabbedPane();
 		panneau = new PanelFig();
 		panneau.setBackground(Color.white);
 		panneau.addMouseListener(new MouseListener(this));
-		return panneau;
+		text = new JTextArea("", 37, 107);
+		//text.setBounds(panneau.getBounds());
+		onglets.add("Graphique", panneau);
+		onglets.add("Saisi text", text);
+		centre = new JPanel();
+		centre.add(onglets);
+		return centre;
 	}
 	public JPanel getPanneauNord(){
 		this.nord = new JPanel();
@@ -117,7 +131,27 @@ public class VueFig extends JFrame implements FigCte{
 		this.couleur = c;
 	}
 	public void nettoyer() {
-		this.getFigs().nettoyer();
+	/*on va mettre toutes les figures dans afficheur dans une liste de reference 
+	et les figures de la liste des figures de la vue qui seront pas dans la liste de reference seront retirées de la liste des figures de la vue
+	*/
+		ArrayList<Figure> reference = new ArrayList<Figure>();
+		for(int i=0; i<affs.getTaille(); i++) {
+			Figure f = affs.getAffs(i).getFigure();//on prends la figure de l'afficheur qu'on regarde dans la liste
+			reference.add(f);//on rajoute la figure dans la liste de reference des figures
+		}
+		ListIterator<Figure> ite = this.getFigs().getFigs().listIterator();//on fait un iterateur de la liste qui y dans EnsFigs
+		while(ite.hasNext()) {
+			Figure ff = ite.next();
+			boolean test = false;//on instanci un test pour savoir si la figure est dans la liste de reference
+			for(int i=0; i<reference.size() && !test;i++) {//on va comparer avec toutes les figures de reference tant qu'on a pas fini ou qu'on a pas trouvé une pareil
+				if(ff.equals(reference.get(i))) {//si on trouve une pareil on passe le test a vrai et ca sort de la boucle
+					test = true;
+				}
+			}
+			if(!test) {//si le test est faux on a pas trouvé donc on enleve la figure de la liste des figures de la vue
+				ite.remove();
+			}
+		}
 	}
 	public String mesFigs() {
 		this.nettoyer();
