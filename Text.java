@@ -8,10 +8,9 @@ public class Text extends Figure {
 	public void setStr(String str) {
 		this.str = str;
 	}
-	public Text(Color c, String str, Point p){
+	public Text(Color c, String str){
 	    super(false, c);
 	    this.str = str;
-	    this.ajouter(p);
 	  }
 	  public String toString(){
 	    String s = "[Str : " + "|"+ str + "|";
@@ -27,4 +26,10 @@ public class Text extends Figure {
 		  test = test && this.getStr().equals(t.getStr());
 		  return test;
 	  }
+		public String sauv(){
+			String s = super.sauv();
+			StringBuffer stB = new StringBuffer(s);
+			stB.insert(12,getStr() + "/");
+			return "te" + "/" + stB;
+		}
 }

@@ -14,4 +14,7 @@ public class Rectangle extends Figure {
 	  }
 	  return super.equals(o);
   }
+  public String sauv(){
+		return "r" + "/" + super.sauv();
+	}
 }

@@ -85,8 +85,8 @@ public class BoutonListener implements FigCte, ActionListener{
       case TEXT : {
     	  System.out.println(vue.getMode() + " = mode");
     	  vue.defaultCursor();
-          System.out.println("new text");
-          vue.setMode(TEXT);
+        System.out.println("new text");
+        vue.setMode(TEXT);
       }
       	break;
       case GOMME : {
@@ -96,6 +96,19 @@ public class BoutonListener implements FigCte, ActionListener{
           System.out.println(vue.mesFigs());
       }
       	break;
+      case SAUVER : {
+        vue.sauver();
+        System.out.println("ca sauvegarde !");
+      }
+        break;
+      case CHARGER : {
+        System.out.println("sa charge att");
+        vue.getFigs().vider();
+        vue.getAffs().vider();
+        vue.charger();
+        vue.getPanneau().repaint();
+      }
+        break;
     }
   }
 }

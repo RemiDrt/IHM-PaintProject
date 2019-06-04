@@ -40,4 +40,9 @@ public class Cercle extends Elipse{
 	  }
 	  return super.equals(o);
   }
+  public String sauv(){
+    String s = super.sauv();
+    s = s.replaceFirst("e/", "c/");
+    return s;
+  }
 }

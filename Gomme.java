@@ -2,9 +2,8 @@ import java.awt.Color;
 import java.awt.Point;
 
 public class Gomme extends Figure {
-	public Gomme(Point centre) {
+	public Gomme() {
 		super(true, Color.white);
-		this.ajouter(centre);
 	}
 	public String toString() {
 		String s = "[Gomme : |" + super.toString() + "]";
@@ -15,5 +14,8 @@ public class Gomme extends Figure {
 		  return false;
 	  }
 	  return super.equals(o);
+	}
+	public String sauv(){
+		return "g" + "/" + super.sauv();
 	}
 }

@@ -64,4 +64,12 @@ public Figure(boolean plein, Color couleur){
     s = s + this.estPlein() + "]";
     return s;
   }
+  public String sauv(){
+    String s = this.getCouleur().getRed() + "/" + this.getCouleur().getGreen() + "/" + this.getCouleur().getBlue() + "/" ;
+    s = s + this.estPlein();
+    for(int i=0; i<this.getTaille(); i++){
+      s = s + "/" + (int)this.getI(i).getX() + "/" + (int)this.getI(i).getY();
+    }
+    return s;
+  }
 }

@@ -40,4 +40,7 @@ public class Elipse extends Figure{
 	  }
 	  return super.equals(o);
   }
+	public String sauv(){
+		return "e" + "/" + super.sauv();
+	}
 }

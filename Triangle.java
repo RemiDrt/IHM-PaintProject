@@ -36,4 +36,7 @@ public class Triangle extends Figure{
 	  }
 	  return super.equals(o);
   }
+  public String sauv(){
+		return "tri" + "/" + super.sauv();
+	}
 }

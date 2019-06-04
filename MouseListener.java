@@ -146,6 +146,8 @@ public class MouseListener extends MouseAdapter {
 					System.out.println("new aff");
 					this.vue.getAffs().ajouter(aff);
 					this.vue.getPanneau().repaint();
+					String s = vue.getFigs().getFigs(0).sauv();
+					System.out.println(s + "!!!!");
 				}
 			}
 			else {
@@ -170,19 +172,25 @@ public class MouseListener extends MouseAdapter {
 		else if (vue.getMode() == 10) {
 			System.out.println("new text");
 			String str = vue.getPanText().getText();
-			Text t = new Text(vue.getCouleur(), str, new Point(e.getX(), e.getY()));
+			Text t = new Text(vue.getCouleur(), str);
+			t.ajouter(new Point(e.getX(), e.getY()));
 			vue.getFigs().ajouter(t);
 			AffText aff = new AffText(t);
 			vue.getAffs().ajouter(aff);
 			this.vue.getPanneau().repaint();
+			System.out.println();
+			String s = vue.getFigs().getFigs(vue.getFigs().getTaille() - 1).sauv();
+			System.out.println(s + "!!!!!!");
 		}
 		else if (vue.getMode() == 11) {
 			System.out.println("new gommme");
-			Gomme g = new Gomme(new Point(e.getX(), e.getY()));
+			Gomme g = new Gomme();
+			g.ajouter(new Point(e.getX(), e.getY()));
 			vue.getFigs().ajouter(g);
 			AffGomme aff = new AffGomme(g);
 			vue.getAffs().ajouter(aff);
 			this.vue.getPanneau().repaint();
+
 		}
 		vue.requestFocus();// pour mettre le focus du clavier sur la fenetre total
 	}

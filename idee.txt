@@ -1,0 +1,4 @@
+une vue  --> un objet type de la vue
+un panel composée de toutes les vues qu'on a créé !
+on crée et ajoute une vue au panel quand on dessine un obj
+
