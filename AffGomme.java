@@ -7,8 +7,10 @@ public class AffGomme implements Afficheur {
 		this.gomme = gomme;
 	}
 	public void dessinerFig(Graphics g) {
-		g.setColor(gomme.getCouleur());
-		g.fillOval((int)gomme.getI(0).getX() - 50, (int)gomme.getI(0).getY() - 50, 100, 100);
+		if(gomme.estComplet()) {
+			g.setColor(gomme.getCouleur());
+			g.fillOval((int)gomme.getI(0).getX() - 50, (int)gomme.getI(0).getY() - 50, 100, 100);
+		}
 	}
 	public Gomme getFigure() {
 		return gomme;

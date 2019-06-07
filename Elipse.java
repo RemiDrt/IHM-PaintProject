@@ -6,6 +6,7 @@ public class Elipse extends Figure{
     super(plein, c);
     this.width = 0;
     this.height = 0;
+    this.setAff(new AffElip(this));
   }
   public int getWidth(){
     return this.width;
@@ -43,4 +44,7 @@ public class Elipse extends Figure{
 	public String sauv(){
 		return "e" + "/" + super.sauv();
 	}
+	public boolean estComplet() {
+		  return super.estComplet();
+	  }
 }

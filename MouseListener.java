@@ -17,10 +17,7 @@ public class MouseListener extends MouseAdapter {
 				System.out.println(new Point(e.getX(), e.getY()).toString());
 				System.out.println("nb point:"+ vue.getFigs().getFigs(vue.getFigs().getTaille() - 1).getTaille());
 				if(vue.getFigs().getFigs(vue.getFigs().getTaille() - 1).getTaille() == 2) {
-					AffSeg aff = new AffSeg(vue.getFigs().getFigs(vue.getFigs().getTaille() - 1));
-					System.out.println("new aff");
-					this.vue.getAffs().ajouter(aff);
-					this.vue.getPanneau().repaint();
+					this.vue.nettoyer();				
 				}
 			}
 			else {
@@ -41,10 +38,7 @@ public class MouseListener extends MouseAdapter {
 				System.out.println(new Point(e.getX(), e.getY()).toString());
 				System.out.println("nb point:"+ vue.getFigs().getFigs(vue.getFigs().getTaille() - 1).getTaille());
 				if(vue.getFigs().getFigs(vue.getFigs().getTaille() - 1).getTaille() == 2) {
-					AffRect aff = new AffRect(vue.getFigs().getFigs(vue.getFigs().getTaille() - 1));
-					System.out.println("new aff");
-					this.vue.getAffs().ajouter(aff);
-					this.vue.getPanneau().repaint();
+					this.vue.nettoyer();
 				}
 			}
 			else {
@@ -75,10 +69,7 @@ public class MouseListener extends MouseAdapter {
 				System.out.println(new Point(e.getX(), e.getY()).toString());
 				System.out.println("nb point:"+ vue.getFigs().getFigs(vue.getFigs().getTaille() - 1).getTaille());
 				if(vue.getFigs().getFigs(vue.getFigs().getTaille() - 1).getTaille() == 3) {
-					AffTri aff = new AffTri(vue.getFigs().getFigs(vue.getFigs().getTaille() - 1));
-					System.out.println("new aff");
-					this.vue.getAffs().ajouter(aff);
-					this.vue.getPanneau().repaint();
+					this.vue.nettoyer();
 				}
 			}
 			else {
@@ -108,10 +99,7 @@ public class MouseListener extends MouseAdapter {
 				System.out.println(new Point(e.getX(), e.getY()).toString());
 				System.out.println("nb point:"+ vue.getFigs().getFigs(vue.getFigs().getTaille() - 1).getTaille());
 				if(vue.getFigs().getFigs(vue.getFigs().getTaille() - 1).getTaille() == 2) {
-					AffElip aff = new AffElip(vue.getFigs().getFigs(vue.getFigs().getTaille() - 1));
-					System.out.println("new aff");
-					this.vue.getAffs().ajouter(aff);
-					this.vue.getPanneau().repaint();
+					this.vue.nettoyer();
 				}
 			}
 			else {
@@ -142,12 +130,7 @@ public class MouseListener extends MouseAdapter {
 				System.out.println(new Point(e.getX(), e.getY()).toString());
 				System.out.println("nb point:"+ vue.getFigs().getFigs(vue.getFigs().getTaille() - 1).getTaille());
 				if(vue.getFigs().getFigs(vue.getFigs().getTaille() - 1).getTaille() == 2) {
-					AffCerc aff = new AffCerc(vue.getFigs().getFigs(vue.getFigs().getTaille() - 1));
-					System.out.println("new aff");
-					this.vue.getAffs().ajouter(aff);
-					this.vue.getPanneau().repaint();
-					String s = vue.getFigs().getFigs(0).sauv();
-					System.out.println(s + "!!!!");
+					this.vue.nettoyer();
 				}
 			}
 			else {
@@ -175,10 +158,7 @@ public class MouseListener extends MouseAdapter {
 			Text t = new Text(vue.getCouleur(), str);
 			t.ajouter(new Point(e.getX(), e.getY()));
 			vue.getFigs().ajouter(t);
-			AffText aff = new AffText(t);
-			vue.getAffs().ajouter(aff);
-			this.vue.getPanneau().repaint();
-			System.out.println();
+			this.vue.nettoyer();
 			String s = vue.getFigs().getFigs(vue.getFigs().getTaille() - 1).sauv();
 			System.out.println(s + "!!!!!!");
 		}
@@ -187,8 +167,7 @@ public class MouseListener extends MouseAdapter {
 			Gomme g = new Gomme();
 			g.ajouter(new Point(e.getX(), e.getY()));
 			vue.getFigs().ajouter(g);
-			AffGomme aff = new AffGomme(g);
-			vue.getAffs().ajouter(aff);
+			this.vue.nettoyer();
 			this.vue.getPanneau().repaint();
 
 		}

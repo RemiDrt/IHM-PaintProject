@@ -10,10 +10,10 @@ public class VueFig extends JFrame implements FigCte{
 	private JButton charg;
 	private static Toolkit atk = Toolkit.getDefaultToolkit();
 	private static Dimension dim = atk.getScreenSize();
-	private static Image image = atk.getImage("gomme.png");
+	//C:\Users\Rémi\Desktop\IHM-projet-master\
+	private static Image image = atk.getImage("C:\\Users\\Rémi\\Desktop\\IHM-projet-master\\gomme.png");
 	private static Cursor c = atk.createCustomCursor(image , new Point(0, 0), "custom cursor");
 	private EnsFig figs;
-	private EnsAff affs;
 	private JPanel nord;
 	private JPanel sud;
 	private JPanel centre;
@@ -33,11 +33,6 @@ public class VueFig extends JFrame implements FigCte{
 		this.panneau = panneau;
 	}
 
-	public EnsAff getAffs() {
-		return affs;
-}
-
-
 	public VueFig(String title, int w, int h){
 		super(title);
 
@@ -55,7 +50,6 @@ public class VueFig extends JFrame implements FigCte{
 		charg.addActionListener(new BoutonListener(FigCte.CHARGER, this));
 		this.figs = new EnsFig();
 		this.figs.ajouter(new Segment(this.getCouleur()));//direct en mode segment
-		this.affs = new EnsAff();
 		this.setBounds(dim.width/2 - w/2, dim.height/2 - h/2, w, h);
 		this.init();
 		this.setVisible(true);
@@ -81,10 +75,9 @@ public class VueFig extends JFrame implements FigCte{
 	public class PanelFig extends JPanel{
 		public void paintComponent(Graphics g){//on parcours tous les afficheurs et on les dessine
 			super.paintComponent(g);
-			for(int i=0; i<getAffs().getTaille(); i++) {
-				getAffs().getAffs(i).dessinerFig(g);
+			for(int i=0; i<getFigs().getTaille(); i++) {
+				getFigs().getFigs(i).getAff().dessinerFig(g);
 			}
-			System.out.println(mesFigs());
 		}
 	}
 	public JPanel getPanneauCentre(){
@@ -145,29 +138,22 @@ public class VueFig extends JFrame implements FigCte{
 	public void setCouleur(Color c){
 		this.couleur = c;
 	}
-	public void nettoyer() {
-	/*on va mettre toutes les figures dans afficheur dans une liste de reference
-	et les figures de la liste des figures de la vue qui seront pas dans la liste de reference seront retirees de la liste des figures de la vue
-	*/
-		ArrayList<Figure> reference = new ArrayList<Figure>();
-		for(int i=0; i<affs.getTaille(); i++) {
-			Figure f = affs.getAffs(i).getFigure();//on prends la figure de l'afficheur qu'on regarde dans la liste
-			reference.add(f);//on rajoute la figure dans la liste de reference des figures
-		}
+	public void nettoyer() {//on enlève les figures non completes !
 		ListIterator<Figure> ite = this.getFigs().getFigs().listIterator();//on fait un iterateur de la liste qui y dans EnsFigs
 		while(ite.hasNext()) {
 			Figure ff = ite.next();
-			boolean test = false;//on instanci un test pour savoir si la figure est dans la liste de reference
-			for(int i=0; i<reference.size() && !test;i++) {//on va comparer avec toutes les figures de reference tant qu'on a pas fini ou qu'on a pas trouve une pareil
-				if(ff.equals(reference.get(i))) {//si on trouve une pareil on passe le test a vrai et ca sort de la boucle
-					test = true;
-				}
-			}
-			if(!test) {//si le test est faux on a pas trouve donc on enleve la figure de la liste des figures de la vue
+			if(!ff.estComplet()) {
 				ite.remove();
 			}
 		}
+		this.notification();
+		System.out.println(mesFigs());
 	}
+	private void notification() {
+		this.getPanneau().repaint();
+		
+	}
+
 	public void sauver() {
 		String path=new File("").getAbsolutePath();
 		JOptionPane.showMessageDialog(null, "Saisir nom du fichier a sauvegarder !", "sauvegarde", JOptionPane.INFORMATION_MESSAGE);
@@ -217,46 +203,25 @@ public class VueFig extends JFrame implements FigCte{
 					boolean p = Boolean.parseBoolean(plein);
 					if(type.equals("r")){
 						f = new Rectangle(p, new Color(r,g,b));
-						Rectangle rec = (Rectangle)f;
-						AffRect aff = new AffRect(rec);
-						getAffs().ajouter(aff);
 					}
 					else if(type.equals("tri")){
 						f = new Triangle(p, new Color(r,g,b));
-						Triangle t = (Triangle)f;
-						AffTri aff = new AffTri(t);
-						getAffs().ajouter(aff);
 					}
 					else if(type.equals("te")){
 						String str = (String)st.nextElement();
 						f = new Text(new Color(r,g,b), str);
-						Text te = (Text)f;
-						AffText aff= new AffText(te);
-						getAffs().ajouter(aff);
 					}
 					else if(type.equals("g")){
 						f = new Gomme();
-						Gomme go = (Gomme)f;
-						AffGomme aff= new AffGomme(go);
-						getAffs().ajouter(aff);
 					}
 					else if(type.equals("e")){
 						f = new Elipse(p, new Color(r,g,b));
-						Elipse e = (Elipse)f;
-						AffElip aff= new AffElip(e);
-						getAffs().ajouter(aff);
 					}
 					else if(type.equals("c")){
 						f = new Cercle(p, new Color(r,g,b));
-						Cercle c = (Cercle)f;
-						AffCerc aff= new AffCerc(f);
-						getAffs().ajouter(aff);
 					}
 					else if(type.equals("s")){
-						f = new Segment(new Color(r,g,b));
-						Segment s = (Segment)f;
-						AffSeg aff= new AffSeg(s);
-						getAffs().ajouter(aff);
+						f = new Segment(new Color(r,g,b));;
 					}
 					while (st.hasMoreElements()){
 						String xi = (String)st.nextElement();
@@ -278,7 +243,6 @@ public class VueFig extends JFrame implements FigCte{
 		}
   }
 	public String mesFigs() {
-		this.nettoyer();
 		return this.getFigs().toString();
 	}
 }

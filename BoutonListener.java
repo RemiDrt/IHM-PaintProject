@@ -104,7 +104,6 @@ public class BoutonListener implements FigCte, ActionListener{
       case CHARGER : {
         System.out.println("sa charge att");
         vue.getFigs().vider();
-        vue.getAffs().vider();
         vue.charger();
         vue.getPanneau().repaint();
       }

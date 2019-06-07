@@ -6,6 +6,7 @@ public class Triangle extends Figure{
     super(plein, c);
    this.lesX = new int[3];
    this.lesY = new int[3];
+   this.setAff(new AffTri(this));
   }
   public int[] getLesX() {
 	  return this.lesX;
@@ -35,6 +36,9 @@ public class Triangle extends Figure{
 		  return false;
 	  }
 	  return super.equals(o);
+  }
+  public boolean estComplet() {
+	  return this.getTaille() >= 3;//il a au moins 3 points
   }
   public String sauv(){
 		return "tri" + "/" + super.sauv();

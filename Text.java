@@ -11,6 +11,7 @@ public class Text extends Figure {
 	public Text(Color c, String str){
 	    super(false, c);
 	    this.str = str;
+	    this.setAff(new AffText(this));
 	  }
 	  public String toString(){
 	    String s = "[Str : " + "|"+ str + "|";
@@ -31,5 +32,8 @@ public class Text extends Figure {
 			StringBuffer stB = new StringBuffer(s);
 			stB.insert(12,getStr() + "/");
 			return "te" + "/" + stB;
+		}
+		public boolean estComplet() {
+			return this.getTaille() >= 1;
 		}
 }

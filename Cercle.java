@@ -4,6 +4,7 @@ public class Cercle extends Elipse{
   public Cercle(boolean plein, Color c){
     super(plein, c);
     this.ray = 0;
+    this.setAff(new AffCerc(this));
   }
   public int getRay(){
     return this.ray;
@@ -44,5 +45,8 @@ public class Cercle extends Elipse{
     String s = super.sauv();
     s = s.replaceFirst("e/", "c/");
     return s;
+  }
+  public boolean estComplet() {
+	  return super.estComplet();
   }
 }

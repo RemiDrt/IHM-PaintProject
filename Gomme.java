@@ -4,6 +4,7 @@ import java.awt.Point;
 public class Gomme extends Figure {
 	public Gomme() {
 		super(true, Color.white);
+		this.setAff(new AffGomme(this));
 	}
 	public String toString() {
 		String s = "[Gomme : |" + super.toString() + "]";
@@ -18,4 +19,7 @@ public class Gomme extends Figure {
 	public String sauv(){
 		return "g" + "/" + super.sauv();
 	}
+	public boolean estComplet() {
+		  return this.getTaille() >= 1;
+	  }
 }

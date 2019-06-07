@@ -6,6 +6,7 @@ public class Figure{
   private Color couleur;
   private boolean plein;
   private ArrayList<Point> points;
+  private Afficheur aff;
 
 public Figure(boolean plein, Color couleur){
     this.couleur = couleur;
@@ -39,6 +40,15 @@ public Figure(boolean plein, Color couleur){
   public int getTaille() {
 	  return this.points.size();
   }
+  public boolean estComplet() {
+	  return this.getTaille() >= 2;//2 c'est le cas le plus general
+  }
+  public Afficheur getAff() {
+		return aff;
+	}
+	public void setAff(Afficheur aff) {
+		this.aff = aff;
+	}
   public boolean equals(Object o) {
 	  if(o == null || !(o instanceof Figure)) {
 		  return false;
@@ -68,7 +78,7 @@ public Figure(boolean plein, Color couleur){
     String s = this.getCouleur().getRed() + "/" + this.getCouleur().getGreen() + "/" + this.getCouleur().getBlue() + "/" ;
     s = s + this.estPlein();
     for(int i=0; i<this.getTaille(); i++){
-      s = s + "/" + (int)this.getI(i).getX() + "/" + (int)this.getI(i).getY();
+      s = s + "/" + (int)this.getI(i).getX() + "/" + (int)this.getI(i).getY() + "/";
     }
     return s;
   }

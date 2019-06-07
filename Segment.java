@@ -2,6 +2,7 @@ import java.awt.Color;
 public class Segment extends Figure {
   public Segment(Color c){
     super(true, c);
+    this.setAff(new AffSeg(this));
   }
   public String toString(){
     String s = "[Seg : ";
@@ -16,5 +17,8 @@ public class Segment extends Figure {
   }
   public String sauv(){
     return "s" + "/" + super.sauv();
+  }
+  public boolean estComplet() {
+	  return super.estComplet();
   }
 }
