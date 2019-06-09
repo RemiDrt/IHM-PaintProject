@@ -97,14 +97,14 @@ public class BoutonListener implements FigCte, ActionListener{
       }
       	break;
       case SAUVER : {
-        vue.sauver();
+        vue.getFigs().sauver();
         System.out.println("ca sauvegarde !");
       }
         break;
       case CHARGER : {
         System.out.println("sa charge att");
         vue.getFigs().vider();
-        vue.charger();
+        vue.getFigs().charger();
         vue.getPanneau().repaint();
       }
         break;
