@@ -10,8 +10,8 @@ public class VueFig extends JFrame implements FigCte{
 	private JButton charg;
 	private static Toolkit atk = Toolkit.getDefaultToolkit();
 	private static Dimension dim = atk.getScreenSize();
-	//C:\Users\Rémi\Desktop\IHM-projet-master\
-	private static Image image = atk.getImage("C:\\Users\\Rémi\\Desktop\\IHM-projet-master\\gomme.png");
+	//C:\Users\RÃ©mi\Desktop\IHM-projet-master\
+	private static Image image = atk.getImage("C:\\Users\\RÃ©mi\\Desktop\\IHM-projet-master\\gomme.png");
 	private static Cursor c = atk.createCustomCursor(image , new Point(0, 0), "custom cursor");
 	private EnsFig figs;
 	private JPanel nord;
@@ -138,7 +138,7 @@ public class VueFig extends JFrame implements FigCte{
 	public void setCouleur(Color c){
 		this.couleur = c;
 	}
-	public void nettoyer() {//on enlève les figures non completes !
+	public void nettoyer() {//on enlÃ¨ve les figures non completes !
 		ListIterator<Figure> ite = this.getFigs().getFigs().listIterator();//on fait un iterateur de la liste qui y dans EnsFigs
 		while(ite.hasNext()) {
 			Figure ff = ite.next();
@@ -149,7 +149,7 @@ public class VueFig extends JFrame implements FigCte{
 		this.notification();
 		System.out.println(mesFigs());
 	}
-	private void notification() {
+	public void notification() {
 		this.getPanneau().repaint();
 		
 	}
